@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>블랙샷 초대 이벤트 마이크로사이트 디자인</title>
+  <meta name="description" content="BlackShot Referral Event - Invite your friends and earn special rewards!" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div id="app">
+    <div class="page-wrapper">
+
+      <!-- Background Image -->
+      <img class="bg-image" src="images/bg.jpg" alt="" />
+
+      <!-- Radial Gradient Overlay -->
+      <div class="gradient-overlay"></div>
+
+      <!-- Orange Atmospheric Glow (desktop) -->
+      <div class="atmo-glow"></div>
+
+      <!-- Dashed Circle Decoration (desktop) -->
+      <div class="dashed-circle"></div>
+
+      <!-- Left Character (desktop) -->
+      <div class="char-left-wrap">
+        <div class="char-left-inner">
+          <img src="images/char-left.png" alt="" />
+        </div>
+      </div>
+
+      <!-- Right Character (desktop) -->
+      <div class="char-right-wrap">
+        <img src="images/char-right.png" alt="" />
+      </div>
+
+      <!-- Main Content Column -->
+      <div class="main-column">
+
+        <!-- Header -->
+        <div class="header">
+          <p class="header-subtitle">Back to BlackShot?</p>
+
+          <div class="referral-title-wrap">
+            <img src="images/referral-title.png" alt="Referral Event" />
+          </div>
+
+          <div class="date-badge-wrap">
+            <div class="date-badge-inner">
+              <img src="images/date-badge.png" alt="Apr. 30. 2026 — May. 15. 2026" />
+              <span class="date-badge-text">Apr. 30. 2026 — May. 15. 2026</span>
+            </div>
+          </div>
+
+          <div class="description">
+            <p>
+              Calling all players who have not logged in to Papaya Play from
+              <strong>Jan. 28, 2026</strong> to <strong>Apr. 29, 2026!</strong>
+            </p>
+            <p>You are eligible for special rewards! This promotion includes new players as well.</p>
+            <p>
+              If your friend logs into the game <strong>using your invitation code</strong>,
+              both <strong>you and your friend</strong> will receive <strong>special rewards!</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- Paper / Envelope Body -->
+        <div class="paper-envelope-wrap" :style="{ marginBottom: wrapperMarginBottom + 'px' }">
+
+          <div class="paper">
+            <img class="paper-texture-tl" src="images/paper-top-left.png" alt="" />
+            <div class="paper-texture-bg-wrap">
+              <img src="images/paper-bg.jpg" alt="" />
+            </div>
+            <div class="paper-vignette"></div>
+
+            <div class="paper-inner">
+
+              <!-- Section 1 — Welcome Back -->
+              <div class="section-card">
+                <div class="stamp-wrap">
+                  <div class="stamp">
+                    <div class="stamp-inner-ring"></div>
+                    <div class="stamp-text-wrap">
+                      <span class="stamp-text">TOP SECRET</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="section-inner">
+                  <div class="section-badge">
+                    <div class="line"></div>
+                    <span class="badge-text">Invited Player</span>
+                    <div class="line"></div>
+                  </div>
+
+                  <h2 class="section-title">Welcome Back</h2>
+
+                  <div class="form-row">
+                    <div class="form-field">
+                      <label class="form-label">Invitation Code</label>
+                      <div class="text-input-wrap">
+                        <input type="text" class="text-input" v-model="inviteCode"
+                          placeholder="Enter your invitation code" />
+                      </div>
+                    </div>
+                    <button class="btn-primary" @click="handleConfirm">Confirm</button>
+                  </div>
+
+                  <p class="no-code-text">
+                    ※ Don&apos;t have a code?
+                    <a href="#">Click HERE</a>
+                    for details.
+                  </p>
+                </div>
+
+                <div class="reward-image-wrap">
+                  <img class="reward-welcome-img" src="images/reward-welcome.jpg" alt="Welcome Back Rewards" />
+                </div>
+
+                <div class="notes">
+                  <p>* Paste or enter your invitation code, then click the Confirm button.</p>
+                  <p>* Log in to Papaya Play and enter your invitation code to receive rewards for you and your friend!
+                  </p>
+                </div>
+              </div>
+
+              <!-- Section 2 — My Invitation -->
+              <div class="section-card">
+                <div class="stamp-wrap" style="top: 24px;">
+                  <div class="stamp">
+                    <div class="stamp-inner-ring"></div>
+                    <div class="stamp-text-wrap">
+                      <span class="stamp-text">TOP SECRET</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="section-inner">
+                  <div class="section-badge">
+                    <div class="line"></div>
+                    <span class="badge-text">Inviting Player</span>
+                    <div class="line"></div>
+                  </div>
+
+                  <h2 class="section-title">My Invitation</h2>
+
+                  <div class="form-row">
+                    <div class="form-field">
+                      <label class="form-label">My Invitation Code</label>
+                      <div class="code-display-wrap">
+                        <input type="text" readonly class="code-display" :class="{ empty: !myCode }" :value="myCode"
+                          placeholder="--- --- ---" />
+                      </div>
+                    </div>
+                    <button class="btn-primary" @click="handleGenerate">Generate</button>
+                  </div>
+
+                  <div class="copy-referral-row">
+                    <div class="copy-buttons">
+                      <button class="btn-copy" :class="{ copied: copiedType === 'code' }" @click="handleCopyCode">
+                        {{ copiedType === 'code' ? 'Copied!' : 'Copy Code' }}
+                      </button>
+                      <button class="btn-copy" :class="{ copied: copiedType === 'url' }" @click="handleCopyUrl">
+                        {{ copiedType === 'url' ? 'Copied!' : 'Copy URL' }}
+                      </button>
+                    </div>
+                    <div class="referral-info">
+                      <div>
+                        <p class="referral-label">Number of Referrals</p>
+                        <p class="referral-count">{{ referralCount }}</p>
+                      </div>
+                      <button class="btn-details" @click="showDetails = true">DETAILS</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="reward-image-wrap">
+                  <img class="reward-invitation-img" src="images/reward-invitation.jpg" alt="My Invitation Rewards" />
+                </div>
+
+                <div class="notes">
+                  <p>* Copy the invitation code or URL and share it with someone you&apos;d like to play with.</p>
+                  <p>* If the invited user enters the code or logs in to Papaya Play through the shared URL to play
+                    BlackShot, both players will receive rewards above.</p>
+                </div>
+              </div>
+
+            </div>
+          </div><!-- /paper -->
+
+          <!-- Envelope flap + wax seal -->
+          <div class="envelope-wrap" :style="{
+            top: isMobile ? 'calc(100% - 40px)' : 'calc(100% - 80px)',
+            height: isMobile ? (envelopeScaledH + noticesExtraH) + 'px' : '441px'
+          }">
+            <div class="envelope-scaled" :style="{
+              transform: 'translateX(-50%) scale(' + envelopeScale + ')',
+              width: envelopeNativeW + 'px',
+              height: envelopeNativeH + 'px'
+            }">
+              <img class="envelope-flap" :style="{
+                width: envelopeNativeW + 'px',
+                height: envelopeNativeH + 'px',
+                top: '-120px'
+              }" src="images/envelope-flap.png" alt="" />
+            </div>
+
+            <div class="notices-wrap" :style="{
+              top: isMobile ? Math.round(envelopeScaledH * 0.35) + 'px' : '160px'
+            }">
+              <p class="notices-title">IMPORTANT NOTICES</p>
+              <ul class="notices-list">
+                <li>The event entry will be completed once the invited user logs into Papaya Play.</li>
+                <li>Only one code can be entered per account.</li>
+                <li>Rewards are sent to your Mailbox in-game, and it must be claimed within 14 days.</li>
+                <li>You can claim up to 5 rewards.</li>
+                <li>All times are based on Central European Summer Time (CEST).</li>
+              </ul>
+            </div>
+
+            <img class="wax-seal" :style="{
+              top: isMobile ? Math.round(20 * envelopeScale) + 'px' : '-20px',
+              width: isMobile ? Math.round(171 * envelopeScale) + 'px' : '171px',
+              height: isMobile ? Math.round(166 * envelopeScale) + 'px' : '166px'
+            }" src="images/decor-bullets.png" alt="" />
+          </div>
+
+        </div><!-- /paper-envelope-wrap -->
+
+      </div><!-- /main-column -->
+
+      <!-- Details Popup -->
+      <div v-if="showDetails" class="popup-backdrop" @click="showDetails = false">
+        <div class="popup-panel" @click.stop>
+          <div class="popup-texture"></div>
+          <div class="popup-inner-border"></div>
+
+          <div class="popup-content">
+            <div class="popup-header">
+              <div>
+                <div class="popup-badge-row">
+                  <div class="popup-badge-line"></div>
+                  <span class="popup-badge-text">Inviting Player</span>
+                  <div class="popup-badge-line"></div>
+                </div>
+                <h2 class="popup-title">Referred Users</h2>
+              </div>
+              <button class="btn-close" @click="showDetails = false" aria-label="Close">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <line x1="1" y1="1" x2="13" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <line x1="13" y1="1" x2="1" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="details-table">
+              <div class="table-header">
+                <div class="table-header-cell">No.</div>
+                <div class="table-header-cell">Date</div>
+                <div class="table-header-cell" style="border-right: none;">Papaya Play Account</div>
+              </div>
+              <div v-for="(row, idx) in referralData" :key="row.no" class="table-row"
+                :class="idx % 2 === 1 ? 'even' : 'odd'">
+                <div class="table-cell no-col">{{ row.no }}</div>
+                <div class="table-cell" :class="{ empty: row.date === '-' }">{{ row.date }}</div>
+                <div class="table-cell" :class="{ empty: row.account === '-' }" style="border-right: none;">{{
+                  row.account }}</div>
+              </div>
+            </div>
+
+            <div class="popup-note">
+              <span>• Information is shown for the first 5 returning users only. Rewards are limited to a maximum of 5
+                per account.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Confirm Result Popup -->
+      <div v-if="resultPopup" class="result-popup-backdrop" @click="resultPopup = null">
+        <div class="result-popup-panel" @click.stop>
+          <div class="result-popup-accent" :class="resultPopup.type"></div>
+          <div class="result-popup-body">
+            <div class="result-popup-icon" :class="resultPopup.type">
+              <!-- Success icon -->
+              <svg v-if="resultPopup.type === 'success'" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <polyline points="6,14 11,20 22,9" stroke="#c9a020" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <!-- Error icon -->
+              <svg v-else width="26" height="26" viewBox="0 0 26 26" fill="none">
+                <line x1="7" y1="7" x2="19" y2="19" stroke="#8b1c1c" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="19" y1="7" x2="7" y2="19" stroke="#8b1c1c" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <p class="result-popup-title">{{ resultPopup.title }}</p>
+            <p class="result-popup-message">{{ resultPopup.message }}</p>
+            <button class="result-popup-btn" :class="resultPopup.type" @click="resultPopup = null">OK</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toast Container -->
+      <div class="toast-container">
+        <div v-for="toast in toasts" :key="toast.id" class="toast" :class="{ 'toast-out': toast.leaving }">
+          <span class="toast-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <circle cx="9" cy="9" r="8" stroke="#c9a020" stroke-width="1.5" />
+              <polyline points="5,9 8,12 13,6" stroke="#c9a020" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="toast-text">{{ toast.message }}</span>
+        </div>
+      </div>
+
+    </div><!-- /page-wrapper -->
+  </div><!-- /app -->
+
+  <!-- Vue 2 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: function () {
+        return {
+          inviteCode: '',
+          myCode: '',
+          referralCount: 5,
+          copiedType: null,
+          showDetails: false,
+          resultPopup: null,
+          toasts: [],
+          windowWidth: window.innerWidth,
+          envelopeNativeW: 898,
+          envelopeNativeH: 460,
+          noticesExtraH: 180,
+          referralData: [
+            { no: 1, date: '2026-04-03 14:30:56', account: 'Play***' },
+            { no: 2, date: '2026-04-03 14:30:56', account: 'Play***' },
+            { no: 3, date: '2026-04-03 14:30:56', account: 'Play***' },
+            { no: 4, date: '-', account: '-' },
+            { no: 5, date: '-', account: '-' }
+          ]
+        };
+      },
+      computed: {
+        isMobile: function () {
+          return this.windowWidth < 640;
+        },
+        envelopeScale: function () {
+          return this.isMobile ? Math.min(1, (this.windowWidth - 16) / this.envelopeNativeW) : 1;
+        },
+        envelopeScaledH: function () {
+          return this.envelopeNativeH * this.envelopeScale;
+        },
+        wrapperMarginBottom: function () {
+          return this.isMobile
+            ? Math.round(this.envelopeScaledH + this.noticesExtraH - 40)
+            : 360;
+        }
+      },
+      mounted: function () {
+        var self = this;
+        this._resizeHandler = function () { self.windowWidth = window.innerWidth; };
+        window.addEventListener('resize', this._resizeHandler);
+      },
+      beforeDestroy: function () {
+        window.removeEventListener('resize', this._resizeHandler);
+      },
+      methods: {
+        handleConfirm: function () {
+          var code = this.inviteCode.trim();
+          if (!code) {
+            this.resultPopup = {
+              type: 'error',
+              title: 'No Code Entered',
+              message: 'Please check your invite code again.'
+            };
+            return;
+          }
+          // Validate format: alphanumeric, 6-20 chars
+          if (!/^[A-Za-z0-9 _-]{4,24}$/.test(code)) {
+            this.resultPopup = {
+              type: 'error',
+              title: 'Invalid Code Format',
+              message: 'Please check your invite code again.'
+            };
+            return;
+          }
+          // Success (in production this would be an API call)
+          this.resultPopup = {
+            type: 'success',
+            title: 'Code Registered!',
+            message: 'Your invite code has been registered successfully! Please check your reward items in-game.'
+          };
+          this.inviteCode = '';
+        },
+        handleGenerate: function () {
+          var code = 'BS'
+            + Math.random().toString(36).substring(2, 5).toUpperCase()
+            + Math.random().toString(36).substring(2, 5).toUpperCase()
+            + Math.random().toString(36).substring(2, 5).toUpperCase();
+          this.myCode = code.slice(0, 3) + ' ' + code.slice(3, 6) + ' ' + code.slice(6, 9);
+        },
+        showToast: function (message) {
+          var self = this;
+          var id = Date.now();
+          this.toasts.push({ id: id, message: message, leaving: false });
+          setTimeout(function () {
+            var toast = self.toasts.find(function (t) { return t.id === id; });
+            if (toast) toast.leaving = true;
+            setTimeout(function () {
+              self.toasts = self.toasts.filter(function (t) { return t.id !== id; });
+            }, 250);
+          }, 2200);
+        },
+        handleCopyCode: function () {
+          if (this.myCode) navigator.clipboard.writeText(this.myCode);
+          this.copiedType = 'code';
+          this.showToast('Invitation Code has been Copied');
+          var self = this;
+          setTimeout(function () { self.copiedType = null; }, 1500);
+        },
+        handleCopyUrl: function () {
+          navigator.clipboard.writeText(
+            'https://papayaplay.com/blackshot/referral?code=' + this.myCode.replace(/ /g, '')
+          );
+          this.copiedType = 'url';
+          this.showToast('Invitation Link has been Copied');
+          var self = this;
+          setTimeout(function () { self.copiedType = null; }, 1500);
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>
