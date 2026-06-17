@@ -49,7 +49,17 @@ ul {
   position: relative;
   min-height: 100vh;
   overflow-x: hidden;
-  background: #100704 url('images/bg.jpg') no-repeat center top / cover;
+  background: #100704;
+}
+
+/* ─── Background Image ─── */
+.bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
 }
 
 /* ─── Radial Gradient Overlay ─── */
@@ -134,7 +144,6 @@ ul {
   max-width: 920px;
   margin: 0 auto;
   z-index: 10;
-  padding-bottom: 100px;
 }
 
 /* ─── Header ─── */
@@ -161,8 +170,17 @@ ul {
   background: linear-gradient(180deg, #fffcf0 0%, #ffd043 35%, #ff7db2 70%, #8b5cf6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter:
-    drop-shadow(2px 0 0 #1b0933) drop-shadow(-2px 0 0 #1b0933) drop-shadow(0 2px 0 #1b0933) drop-shadow(0 -2px 0 #1b0933) drop-shadow(1.5px 1.5px 0 #1b0933) drop-shadow(-1.5px -1.5px 0 #1b0933) drop-shadow(1.5px -1.5px 0 #1b0933) drop-shadow(-1.5px 1.5px 0 #1b0933) drop-shadow(0 6px 0px #110324) drop-shadow(0 10px 16px rgba(0, 0, 0, 0.65));
+  filter: 
+    drop-shadow(2px 0 0 #1b0933) 
+    drop-shadow(-2px 0 0 #1b0933) 
+    drop-shadow(0 2px 0 #1b0933) 
+    drop-shadow(0 -2px 0 #1b0933)
+    drop-shadow(1.5px 1.5px 0 #1b0933)
+    drop-shadow(-1.5px -1.5px 0 #1b0933)
+    drop-shadow(1.5px -1.5px 0 #1b0933)
+    drop-shadow(-1.5px 1.5px 0 #1b0933)
+    drop-shadow(0 6px 0px #110324)
+    drop-shadow(0 10px 16px rgba(0, 0, 0, 0.65));
   letter-spacing: -0.5px;
   margin-bottom: 20px;
   text-align: center;
@@ -219,7 +237,7 @@ ul {
 
 .paper {
   position: relative;
-  background: #f4f4f4;
+  background: #fdfaf3;
   border: 4px solid #d4c5f9;
   border-radius: 36px;
   box-shadow: 0 20px 40px rgba(100, 150, 250, 0.12);
@@ -262,7 +280,7 @@ ul {
 
 .paper-inner {
   position: relative;
-  padding: 32px 32px 170px;
+  padding: 32px 32px 138px;
   z-index: 2;
 }
 
@@ -644,12 +662,13 @@ ul {
   position: relative;
   margin-top: -80px;
   width: 100%;
+  background: linear-gradient(to bottom, #351f16 0%, #170e0a 100%);
   border-radius: 0 0 36px 36px;
   border: 2px solid #5a3c2f;
   border-top: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   z-index: 30;
   box-sizing: border-box;
-  background: #f2f2f1;
 }
 
 .envelope-scaled {
@@ -664,15 +683,15 @@ ul {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  object-fit: fill;
+  object-fit: cover;
   max-width: none;
 }
 
 .notices-wrap {
   position: relative;
   margin: 0 auto;
-  padding-top: 135px;
-  padding-bottom: 30px;
+  padding-top: 140px;
+  padding-bottom: 24px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -684,7 +703,7 @@ ul {
 
 .notices-title {
   text-transform: uppercase;
-  color: #846000;
+  color: #ffd043;
   font-family: 'Fredoka', sans-serif;
   font-weight: 700;
   font-size: 20px;
@@ -693,20 +712,20 @@ ul {
 }
 
 .notices-list {
-  color: #3c3c3c;
+  color: #fff1c7;
   font-family: 'Nunito', sans-serif;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .notices-list li {
   margin-left: 24px;
-  line-height: 21px;
+  line-height: 22px;
   list-style: disc;
 }
 
 .notices-list li+li {
-  margin-top: 5px;
+  margin-top: 6px;
 }
 
 .wax-seal {
@@ -1054,25 +1073,13 @@ ul {
 }
 
 @keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 @keyframes popup-slide-in {
-  from {
-    opacity: 0;
-    transform: translateY(24px) scale(0.96);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  from { opacity: 0; transform: translateY(24px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
 }
 
 /* ─── Toast Notification ─── */
@@ -1132,7 +1139,6 @@ ul {
     opacity: 0;
     transform: translateY(12px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1144,7 +1150,6 @@ ul {
     opacity: 1;
     transform: translateY(0);
   }
-
   to {
     opacity: 0;
     transform: translateY(8px);
@@ -1398,21 +1403,9 @@ ul {
 
 /* ─── Shake Animation ─── */
 @keyframes shake {
-
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-
-  20%,
-  60% {
-    transform: translateX(-6px);
-  }
-
-  40%,
-  80% {
-    transform: translateX(6px);
-  }
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
 }
 
 .shake-anim {

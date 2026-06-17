@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>블랙샷 초대 이벤트 마이크로사이트 디자인</title>
-  <meta name="description" content="BlackShot Referral Event - Invite your friends and earn special rewards!" />
+  <title>라테일 초대 이벤트 마이크로사이트 디자인</title>
+  <meta name="description" content="La Tale Referral Event - Invite your friends and earn special rewards!" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -14,17 +14,14 @@
   <div id="app">
     <div class="page-wrapper">
 
-      <!-- Background Image -->
-      <img class="bg-image" src="images/bg.jpg" alt="" />
 
-      <!-- Radial Gradient Overlay -->
-      <div class="gradient-overlay"></div>
+
+
 
       <!-- Orange Atmospheric Glow (desktop) -->
       <div class="atmo-glow"></div>
 
-      <!-- Dashed Circle Decoration (desktop) -->
-      <div class="dashed-circle"></div>
+
 
       <!-- Left Character (desktop) -->
       <div class="char-left-wrap">
@@ -43,39 +40,35 @@
 
         <!-- Header -->
         <div class="header">
-          <p class="header-subtitle">Back to BlackShot?</p>
+          <p class="header-subtitle">Back to La Tale?</p>
 
-          <div class="referral-title-wrap">
-            <img src="images/referral-title.png" alt="Referral Event" />
-          </div>
+          <h1 class="referral-title-text">REFERRAL EVENT</h1>
 
           <div class="date-badge-wrap">
-            <div class="date-badge-inner">
-              <img src="images/date-badge.png" alt="Apr. 30. 2026 — May. 15. 2026" />
-              <span class="date-badge-text">Apr. 30. 2026 — May. 15. 2026</span>
-            </div>
+            <span class="date-badge-text">Event Period: June 25 ~ August 25</span>
           </div>
 
           <div class="description">
+            <p>Your journey's calling!</p>
             <p>
-              Calling all players who have not logged in to Papaya Play from
-              <strong>Jan. 28, 2026</strong> to <strong>Apr. 29, 2026!</strong>
+              If you haven't logged into La Tale between <strong>March 1 and May 28</strong>, we've got special rewards
+              waiting for you — and yes, new players are invited to the party, too!
             </p>
-            <p>You are eligible for special rewards! This promotion includes new players as well.</p>
             <p>
-              If your friend logs into the game <strong>using your invitation code</strong>,
-              both <strong>you and your friend</strong> will receive <strong>special rewards!</strong>
+              Even better: when a friend jumps into the game <strong>with your invitation code</strong>, <strong>BOTH of
+                you</strong> score <strong>special rewards.</strong>
             </p>
+            <p>Grab your friends and let's make some memories in La Tale!</p>
           </div>
         </div>
 
         <!-- Paper / Envelope Body -->
-        <div class="paper-envelope-wrap" :style="{ marginBottom: wrapperMarginBottom + 'px' }">
+        <div class="paper-envelope-wrap">
 
           <div class="paper">
             <img class="paper-texture-tl" src="images/paper-top-left.png" alt="" />
             <div class="paper-texture-bg-wrap">
-              <img src="images/paper-bg.jpg" alt="" />
+
             </div>
             <div class="paper-vignette"></div>
 
@@ -83,14 +76,7 @@
 
               <!-- Section 1 — Welcome Back -->
               <div class="section-card">
-                <div class="stamp-wrap">
-                  <div class="stamp">
-                    <div class="stamp-inner-ring"></div>
-                    <div class="stamp-text-wrap">
-                      <span class="stamp-text">TOP SECRET</span>
-                    </div>
-                  </div>
-                </div>
+
 
                 <div class="section-inner">
                   <div class="section-badge">
@@ -99,12 +85,12 @@
                     <div class="line"></div>
                   </div>
 
-                  <h2 class="section-title">Welcome Back</h2>
+                  <h2 class="section-title">Welcome Back!</h2>
 
                   <div class="form-row">
                     <div class="form-field">
                       <label class="form-label">Invitation Code</label>
-                      <div class="text-input-wrap">
+                      <div class="text-input-wrap" :class="{ 'shake-anim': shakeInput }">
                         <input type="text" class="text-input" v-model="inviteCode"
                           placeholder="Enter your invitation code" />
                       </div>
@@ -122,6 +108,7 @@
                 <div class="reward-image-wrap">
                   <img class="reward-welcome-img" src="images/reward-welcome.jpg" alt="Welcome Back Rewards" />
                 </div>
+                <p class="reward-package-name">[La Tale Reward Package A]</p>
 
                 <div class="notes">
                   <p>* Paste or enter your invitation code, then click the Confirm button.</p>
@@ -132,14 +119,7 @@
 
               <!-- Section 2 — My Invitation -->
               <div class="section-card">
-                <div class="stamp-wrap" style="top: 24px;">
-                  <div class="stamp">
-                    <div class="stamp-inner-ring"></div>
-                    <div class="stamp-text-wrap">
-                      <span class="stamp-text">TOP SECRET</span>
-                    </div>
-                  </div>
-                </div>
+
 
                 <div class="section-inner">
                   <div class="section-badge">
@@ -183,11 +163,12 @@
                 <div class="reward-image-wrap">
                   <img class="reward-invitation-img" src="images/reward-invitation.jpg" alt="My Invitation Rewards" />
                 </div>
+                <p class="reward-package-name">[La Tale Reward Package B]</p>
 
                 <div class="notes">
                   <p>* Copy the invitation code or URL and share it with someone you&apos;d like to play with.</p>
-                  <p>* If the invited user enters the code or logs in to Papaya Play through the shared URL to play
-                    BlackShot, both players will receive rewards above.</p>
+                  <p>* If the invited user enters the code or logs in to Papaya Play through the shared URL to play La
+                    Tale, you will receive the rewards above.</p>
                 </div>
               </div>
 
@@ -195,14 +176,11 @@
           </div><!-- /paper -->
 
           <!-- Envelope flap + wax seal -->
-          <div class="envelope-wrap" :style="{
-            top: isMobile ? 'calc(100% - 40px)' : 'calc(100% - 80px)',
-            height: isMobile ? (envelopeScaledH + noticesExtraH) + 'px' : '441px'
-          }">
+          <div class="envelope-wrap">
             <div class="envelope-scaled" :style="{
               transform: 'translateX(-50%) scale(' + envelopeScale + ')',
               width: envelopeNativeW + 'px',
-              height: envelopeNativeH + 'px'
+              height: (envelopeNativeH - 120) + 'px'
             }">
               <img class="envelope-flap" :style="{
                 width: envelopeNativeW + 'px',
@@ -211,24 +189,26 @@
               }" src="images/envelope-flap.png" alt="" />
             </div>
 
-            <div class="notices-wrap" :style="{
-              top: isMobile ? Math.round(envelopeScaledH * 0.35) + 'px' : '160px'
-            }">
+            <div class="notices-wrap">
               <p class="notices-title">IMPORTANT NOTICES</p>
               <ul class="notices-list">
                 <li>The event entry will be completed once the invited user logs into Papaya Play.</li>
-                <li>Only one code can be entered per account.</li>
+                <li>Only one code can be entered on a new/returning account.</li>
                 <li>Rewards are sent to your Mailbox in-game, and it must be claimed within 14 days.</li>
                 <li>You can claim up to 5 rewards.</li>
-                <li>All times are based on Central European Summer Time (CEST).</li>
+                <li>Any user with no login history from March 1 to May 31, 2026 is classified as a returning user, and
+                  remains classified as a returning user even if they log in on or after June 1, 2026.</li>
+                <li>All times are based on Eastern Daylight Time (US).</li>
               </ul>
             </div>
 
             <img class="wax-seal" :style="{
-              top: isMobile ? Math.round(20 * envelopeScale) + 'px' : '-20px',
-              width: isMobile ? Math.round(171 * envelopeScale) + 'px' : '171px',
-              height: isMobile ? Math.round(166 * envelopeScale) + 'px' : '166px'
+              top: isMobile ? Math.round(19 * envelopeScale) + 'px' : '-19px',
+              width: isMobile ? Math.round(150 * envelopeScale) + 'px' : '170px',
+              height: isMobile ? Math.round(146 * envelopeScale) + 'px' : '146px'
             }" src="images/decor-bullets.png" alt="" />
+
+
           </div>
 
         </div><!-- /paper-envelope-wrap -->
@@ -275,7 +255,7 @@
             </div>
 
             <div class="popup-note">
-              <span>• Information is shown for the first 5 returning users only. Rewards are limited to a maximum of 5
+              <span>• Information is shown for the first 5 returning users only; rewards are limited to a maximum of 5
                 per account.</span>
             </div>
           </div>
@@ -284,18 +264,19 @@
 
       <!-- Confirm Result Popup -->
       <div v-if="resultPopup" class="result-popup-backdrop" @click="resultPopup = null">
-        <div class="result-popup-panel" @click.stop>
+        <div class="result-popup-panel" :class="resultPopup.type" @click.stop>
           <div class="result-popup-accent" :class="resultPopup.type"></div>
           <div class="result-popup-body">
             <div class="result-popup-icon" :class="resultPopup.type">
               <!-- Success icon -->
               <svg v-if="resultPopup.type === 'success'" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <polyline points="6,14 11,20 22,9" stroke="#c9a020" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline points="6,14 11,20 22,9" stroke="#c9a020" stroke-width="2.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
               </svg>
               <!-- Error icon -->
               <svg v-else width="26" height="26" viewBox="0 0 26 26" fill="none">
-                <line x1="7" y1="7" x2="19" y2="19" stroke="#8b1c1c" stroke-width="2.5" stroke-linecap="round"/>
-                <line x1="19" y1="7" x2="7" y2="19" stroke="#8b1c1c" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="7" y1="7" x2="19" y2="19" stroke="#ff85a2" stroke-width="2.5" stroke-linecap="round" />
+                <line x1="19" y1="7" x2="7" y2="19" stroke="#ff85a2" stroke-width="2.5" stroke-linecap="round" />
               </svg>
             </div>
             <p class="result-popup-title">{{ resultPopup.title }}</p>
@@ -310,8 +291,8 @@
         <div v-for="toast in toasts" :key="toast.id" class="toast" :class="{ 'toast-out': toast.leaving }">
           <span class="toast-icon">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <circle cx="9" cy="9" r="8" stroke="#c9a020" stroke-width="1.5" />
-              <polyline points="5,9 8,12 13,6" stroke="#c9a020" stroke-width="1.8" stroke-linecap="round"
+              <circle cx="9" cy="9" r="8" stroke="currentColor" stroke-width="1.5" />
+              <polyline points="5,9 8,12 13,6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
                 stroke-linejoin="round" />
             </svg>
           </span>
@@ -324,12 +305,15 @@
 
   <!-- Vue 2 CDN -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.min.js"></script>
+  <!-- Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
   <script>
     new Vue({
       el: '#app',
       data: function () {
         return {
           inviteCode: '',
+          shakeInput: false,
           myCode: '',
           referralCount: 5,
           copiedType: null,
@@ -338,12 +322,12 @@
           toasts: [],
           windowWidth: window.innerWidth,
           envelopeNativeW: 898,
-          envelopeNativeH: 460,
+          envelopeNativeH: 500,
           noticesExtraH: 180,
           referralData: [
-            { no: 1, date: '2026-04-03 14:30:56', account: 'Play***' },
-            { no: 2, date: '2026-04-03 14:30:56', account: 'Play***' },
-            { no: 3, date: '2026-04-03 14:30:56', account: 'Play***' },
+            { no: 1, date: '2026-XX-XX 00:00:00', account: 'Play***' },
+            { no: 2, date: '2026-XX-XX 00:00:00', account: 'Play***' },
+            { no: 3, date: '2026-XX-XX 00:00:00', account: 'Play***' },
             { no: 4, date: '-', account: '-' },
             { no: 5, date: '-', account: '-' }
           ]
@@ -362,7 +346,7 @@
         wrapperMarginBottom: function () {
           return this.isMobile
             ? Math.round(this.envelopeScaledH + this.noticesExtraH - 40)
-            : 360;
+            : 220;
         }
       },
       mounted: function () {
@@ -375,8 +359,11 @@
       },
       methods: {
         handleConfirm: function () {
+          var self = this;
           var code = this.inviteCode.trim();
           if (!code) {
+            this.shakeInput = true;
+            setTimeout(function () { self.shakeInput = false; }, 400);
             this.resultPopup = {
               type: 'error',
               title: 'No Code Entered',
@@ -386,6 +373,8 @@
           }
           // Validate format: alphanumeric, 6-20 chars
           if (!/^[A-Za-z0-9 _-]{4,24}$/.test(code)) {
+            this.shakeInput = true;
+            setTimeout(function () { self.shakeInput = false; }, 400);
             this.resultPopup = {
               type: 'error',
               title: 'Invalid Code Format',
@@ -400,9 +389,17 @@
             message: 'Your invite code has been registered successfully! Please check your reward items in-game.'
           };
           this.inviteCode = '';
+          if (window.confetti) {
+            window.confetti({
+              particleCount: 120,
+              spread: 80,
+              origin: { y: 0.6 },
+              colors: ['#a78bfa', '#f472b6', '#ffd043', '#3b82f6', '#10b981']
+            });
+          }
         },
         handleGenerate: function () {
-          var code = 'BS'
+          var code = 'LT'
             + Math.random().toString(36).substring(2, 5).toUpperCase()
             + Math.random().toString(36).substring(2, 5).toUpperCase()
             + Math.random().toString(36).substring(2, 5).toUpperCase();
@@ -429,7 +426,7 @@
         },
         handleCopyUrl: function () {
           navigator.clipboard.writeText(
-            'https://papayaplay.com/blackshot/referral?code=' + this.myCode.replace(/ /g, '')
+            'https://papayaplay.com/latale/referral?code=' + this.myCode.replace(/ /g, '')
           );
           this.copiedType = 'url';
           this.showToast('Invitation Link has been Copied');
